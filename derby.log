@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun Jul 28 08:13:26 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-016c-3849-0b09-0000096a1d50 
+on database directory memory:/Users/darlyn/Desktop/BemPromotoraBackend/testdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/darlyn/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_211-b12
+user.dir=/Users/darlyn/Desktop/BemPromotoraBackend
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.14.5
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
