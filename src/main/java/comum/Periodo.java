@@ -10,4 +10,8 @@ public class Periodo {
         this.inicio = inicio;
         this.fim = fim;
     }
+
+    public static Periodo de(Data inicio, Data fim){
+        return new Periodo(inicio, fim);
+    }
 }

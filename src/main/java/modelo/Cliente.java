@@ -2,13 +2,13 @@ package modelo;
 
 public class Cliente extends PessoaFisica {
 
-    private Convenio convenio;
+    private ConvenioCliente convenio;
 
-    public Convenio getConvenio() {
+    public ConvenioCliente getConvenio() {
         return convenio;
     }
 
-    public void setConvenio(Convenio convenio) {
+    public void setConvenio(ConvenioCliente convenio) {
         this.convenio = convenio;
     }
 }
