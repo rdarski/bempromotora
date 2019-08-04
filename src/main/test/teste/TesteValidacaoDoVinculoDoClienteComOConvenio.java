@@ -1,16 +1,13 @@
 package teste;
 
 import arquitetura.BPLogicException;
-//import com.sun.tools.javac.tree.JCTree;
 import modelo.Cliente;
-import modelo.Convenio;
 import modelo.SituacaoConvenio;
 import modelo.dto.ValidaVinculoDoClienteComOConvenioDTO;
 import modelo.processador.ProcessadorQueValidaVinculoDoClienteComOConvenio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import teste.builder.ClienteBuilder;
-import teste.builder.ConvenioBuilder;
 
 public class TesteValidacaoDoVinculoDoClienteComOConvenio {
 

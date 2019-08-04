@@ -25,6 +25,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>RELEASE</junit.version>
 	</properties>
 
 	<dependencies>
@@ -90,14 +91,25 @@
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>2.8.6</version>
 		</dependency>
-
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<version>RELEASE</version>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.1.1</version>
+				<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>1.1.1</version>
 			<scope>test</scope>
 		</dependency>
-		</dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.1.1</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
 
 </project>
