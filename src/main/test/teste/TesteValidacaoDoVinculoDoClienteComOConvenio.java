@@ -1,7 +1,7 @@
 package teste;
 
 import arquitetura.BPLogicException;
-import com.sun.tools.javac.tree.JCTree;
+//import com.sun.tools.javac.tree.JCTree;
 import modelo.Cliente;
 import modelo.Convenio;
 import modelo.SituacaoConvenio;
