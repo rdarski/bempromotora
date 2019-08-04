@@ -1,0 +1,155 @@
+ A) Regras da Proposta
+
+ 1  Característica de aceite: Idade máxima e minima para fazer empréstimo consignado.
+
+ 1.1  Regra: Idade máxima de 75 anos.
+ 1.1.1  Cenário: Idade superior a idade máxima 
+		Dado que existe um cliente cadastrado com 81 anos
+		E a idade máxima é de 75 anos
+		Quando uma nova proposta foi inclusa com data de hoje 
+		Então a proposta deve ser rejeitada.
+ 1.1.2  Cenário: Idade menor que a idade máxima
+		Dado que existe um cliente cadastrado com 55 anos
+		E a idade máxima é de 75 anos
+		Quando uma nova proposta for cadastrada para ele com data de hoje
+		Então a proposta é aceita.
+
+ 1.2  Regra: Idade mínima é de 18 anos.
+ 1.2.1  Cenário: Idade do cliente é menor que a idade mínima.
+		Dado que existe um cliente com idade de  16 anos
+		E a idade mínima é 18 anos.
+		Quando uma nova proposta for cadastrada para ele com data de hoje
+		Então a proposta será rejeitada.
+ 1.2.2  Cenário: Idade maior que a idade mínima
+		Dado que existe um cliente cadastrado com 54 anos
+		E a idade mínima é 18 anos.
+		Quando uma nova proposta for cadastrada para ele com data de hoje
+		Então a proposta será aceita nesse critério.
+
+ 2  Característica de aceite: Respeitar o valor máximo e mínimo para empréstimo.
+ 2.1  Regra: Valor limite para empréstimo é maior que o valor emprestado
+ 2.1.1  Cenário: Valor total das propostas do cliente abaixo do limite.
+		Dado que existe um cliente que quer empréstimo consignado
+		E o valor limite para empréstimo é de R$60000,00
+		E o cliente não tem outros contratos
+		Quando for inclusa a proposta no valor de R$50000,00 
+		Então a proposta será aceita nesse critério.
+ 2.1.2  Cenário: Valor total das propostas do cliente acima do limite.
+		Dado que existe um cliente que quer empréstimo consignado
+		E o valor limite para empréstimo é de R$60000,00
+		E o cliente tem outros contratos não encerrados cujos os status sejam diferentes de 21, 51, 100 e 101 totalizando o valor de R$58000,00
+		Quando for inclusa a proposta no valor de R$5000,00 
+		Então a proposta não será aceita.
+ 2.2  Regra: Valor a ser emprestado deve ser maior que o mínimo.
+ 2.2.1  Cenário: Valor total das propostas do cliente é abaixo do limite mínimo.
+		Dado que existe um cliente que quer empréstimo consignado
+		E o valor mínimo  para empréstimo é de R$300,00
+		Quando for inclusa a proposta no valor de R$200,00 
+		Então a proposta não será aceita.
+
+ 3  Característica de aceite: Proposta somente com CPF OK
+ 3.1  Regra: CPF deve estar liberado no cadastro.
+ 3.1.1  Cenário: Cliente está impedido no cadastro
+		Dado que existe um cliente que esteja em algumas das situações Bloqueado
+		Ou Inativo
+		Quando for inclusa uma proposta para esse cliente
+		Então a proposta não será aceita.
+ 3.1.2  Cenário: Cliente está liberado no cadastro
+		Dado que existe um cliente que esteja Ativo
+		Quando for inclusa uma proposta para esse cliente
+		Então a proposta será aceita.
+ 3.2  Regra: CPF deve estar liberado na RF.
+ 3.2.1  Cenário: Situação na receita desconhecida.
+		Dado que existe um cliente Ativo
+		E que se desconheça a situação na receita. 
+		Quando for informado o cliente na proposta
+		Então um processo de consulta na receita federal de forma assíncrona é executado. 
+ 3.2.2  Cenário: Situação na receita não retornou
+		Dado que existe um cliente informado em uma proposta em digitação
+		E que se desconheça a situação na receita. 
+		Quando for salva a proposta
+		Então a proposta informa que a situação do cliente é desconhecida e pode impedir a sua aprovação.
+ 3.2.3  Cenário: Situação na receita retornou como CPF suspenso
+		Dado que existe um cliente informado em uma proposta em digitação
+		E que seu estado de situação na receita seja suspenso 
+		Quando for salva a proposta
+		Então a proposta informará que a situação do cliente na receita é suspensa
+		E o cliente ficará com o status de Bloqueado.
+ 3.2.4  Cenário: Situação na receita retornou como CPF OK
+		Dado que existe um cliente informado em uma proposta em digitação
+		E que seu estado de situação na receita seja OK 
+		Quando for salva a proposta
+		Então a proposta estará valida por essa regra.
+
+ 4  Característica de aceite: Cliente ativo em algum dos convênios
+ 4.1  Regra: Cliente ativo no INSS ou SIAPE
+ 4.1.1  Cenário: Inativo no INSS e SIAPE
+		Dado que existe um cliente informado em uma proposta em digitação
+		E a situação dele for Inativo ou Inexistente no INSS
+        E a situação dele for Inativo ou Inexistente no SIAPE 
+		Quando for salva a proposta
+		Então a proposta não será valida por essa regra.
+ 4.1.2  Cenário: Ativo no INSS ou o SIAPE
+		Dado que existe um cliente informado em uma proposta em digitação
+		E a situação dele for Ativo no INSS
+		Ou for Ativo no SIAPE
+		Quando for salva a proposta
+		Então a proposta será valida por essa regra.
+
+ 5  Característica de aceite: Limite de contratos ativos.
+ 5.1  Regra: O máximo de contratos ativos é de 5 contratos.
+ 5.1.1  Cenário: Caso o cliente tenha 5 contratos ativos 
+		Dado que existe um cliente com 5 propostas com status diferentes de 21, 51, 100 e 101
+		Quando for inclusa mais uma proposta
+		Então a proposta não será aceita, avisando que o limite é 5.
+ 5.1.2  Cenário: Caso o cliente tenha menos de 5 contratos ativos 
+		Dado que existe um cliente com 4 propostas com status diferentes de 21, 51, 100 e 101
+		Quando for inclusa mais uma proposta
+		Então a proposta será aceita nessa regra.
+
+ 6  Característica de aceite: Status da proposta
+ 6.1  Regra: Status de aceita por um dos critérios
+ 6.1.1  Cenário:  Caso a proposta não seja aceita por alguma das regras 
+		Dado que uma proposta foi inclusa
+		Quando uma das regras de não aceite for acionada
+		Então a proposta irá ficar com Status 20
+ 6.1.2  Cenário:  Caso falte documentos
+		Dado que uma proposta foi inclusa
+		E passe por todas as regras
+		E falte documentos anexos ou assinatura
+		Quando salvar a proposta
+		Então a proposta irá ficar com Status 30
+		E aguardará providencia de um analista.
+ 6.1.3  Cenário:  Caso um analista cancele
+		Dado que uma proposta está com Status 10
+		Ou 20 ou 30
+		Quando um analista analisar a proposta
+		E decidir cancelar
+		Então a proposta irá ficar com Status 21.
+ 6.1.4  Cenário:  Caso um cliente cancele
+		Dado que uma proposta foi inclusa
+		E não tenha os Status 21,51, 100 e 101
+		Quando um cliente decide cancelar
+		Então um a proposta irá ficar com Status 101.
+ 6.1.5  Cenário:  Enviado para convenio
+		Dado que uma proposta está com Status 40
+		Quando ela for enviada para ser verificada pelo convênio
+		Então a proposta irá ficar com Status 50.
+ 6.1.6  Cenário:  Enviado para convenio
+		Dado que uma proposta está com Status 40
+		Quando ela for enviada para ser verificada pelo convênio
+		Então a proposta irá ficar com Status 50.
+ 6.1.7  Cenário:  Reprovada pelo convenio
+		Dado que uma proposta está com Status 50
+		E foi reprovada pelo convênio
+		Quando ela retornar do convênio
+		Então a proposta irá ficar com Status 51.
+ 6.1.8  Cenário:  Aprovada pelo convenio
+		Dado que uma proposta está com Status 50
+		E foi aprovada pelo convênio
+		Quando ela retornar do convênio
+		Então a proposta irá ficar com Status 60.
+ 6.1.9  Cenário:  Realização do pagamento
+		Dado que uma proposta está com Status 60
+		Quando for efetuado o pagamento ao cliente
+		Então a proposta irá ficar com Status 100.
