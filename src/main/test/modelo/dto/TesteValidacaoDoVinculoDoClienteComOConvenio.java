@@ -1,4 +1,4 @@
-package teste;
+package modelo.dto;
 
 import arquitetura.BPLogicException;
 import modelo.Cliente;

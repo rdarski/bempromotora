@@ -2,30 +2,42 @@ package modelo.propostacredito;
 
 public enum SituacaoPropostaCredito {
 
-    ABERTA("Aberta"),
-    SUBMETIDA_PARA_ANALISE("Submetida para análise"),
-    PENDENTE_DE_ANALISE("Pendente de Análise"),
-    EM_ANALISE("Em análise"),
-    APROVADA("Aprovada"),
-    REPROVADA("Reprovada"),
-    CANCELADA("Cancelada"),
-    AGUARDANDO_ASSINATURA("Aguardando Assinatura"),
-    ASSINADA("Assinada"),
-    PROCESSANDO_PAGAMENTO("Processando Pagamento"),
-    PAGAMENTO_EFETUADO("Pagamento Efetuado"),
-    QUITADA("Quitada");
+	EM_EDICAO(0, "Em edição"),
+    ABERTA(10, "Aberta"),
+    SUBMETIDA_PARA_ANALISE(20, "Submetida para análise"),
+    PENDENTE_DE_ANALISE(30, "Pendente de Análise - Documentos"),
+    //AGUARDANDO_ASSINATURA(31, "Aguardando Assinatura"),
+    //ASSINADA(32, "Assinada"),
+    //EM_ANALISE(35, "Em análise"),
+    APROVADA(40, "Aprovada"),
+    REPROVADA(21, "Reprovada"),
+    CANCELADA(101, "Cancelada"),
+    ANALISE_NO_CONVENIO(50, "No Convenio"),
+    REPROVADA_NO_CONVENIO(51, "Reprovada pelo Convenio"),
+    PROCESSANDO_PAGAMENTO(60, "Aprovada Convenio - Processando Pagamento"),
+    PAGAMENTO_EFETUADO(100, "Pagamento Efetuado");
+    //QUITADA(150, "Quitada");
 
-    private String descricao;
+	private final int id;
+	private final String descricao;
+	
+	private SituacaoPropostaCredito(int id, String dsc){
+        this.id = id;
+        this.descricao = dsc;
+    }
 
+	public int getId(){
+        return id;
+    }
+	
+	
     public String getDescricao() {
         return descricao;
     }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    
+    public SituacaoPropostaCredito getMountByID(int id)
+    {
+        return SituacaoPropostaCredito.values()[id];
     }
-
-    SituacaoPropostaCredito(String descricao) {
-        this.descricao = descricao;
-    }
+       
 }
