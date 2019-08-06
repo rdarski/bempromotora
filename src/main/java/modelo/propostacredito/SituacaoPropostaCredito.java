@@ -21,23 +21,19 @@ public enum SituacaoPropostaCredito {
 	private final int id;
 	private final String descricao;
 	
-	private SituacaoPropostaCredito(int id, String dsc){
+	private SituacaoPropostaCredito(int id, String descricao){
         this.id = id;
-        this.descricao = dsc;
+        this.descricao = descricao;
     }
 
 	public int getId(){
-        return id;
+        return this.id;
     }
 	
 	
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
     
-    public SituacaoPropostaCredito getMountByID(int id)
-    {
-        return SituacaoPropostaCredito.values()[id];
-    }
-       
+    
 }

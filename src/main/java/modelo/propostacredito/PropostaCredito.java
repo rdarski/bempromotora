@@ -84,41 +84,73 @@ public class PropostaCredito extends AbstractEntity {
 		return this.situacao;
 	}
 
-	public void setSituacao(SituacaoPropostaCredito sit) {
-		int sitid=10;
-		//switch (situacao.id()) {
-		switch (sitid) {
-		case 10:
-			if (!((sit.getId()==20)) || (sit.getId()==30) || (sit.getId()==101)) {
-				return;
-			}
-			break;
-/*		case 20:
-			if (!((sit.equals(40)) || (sit.equals(21)) || (sit.equals(101)))) {
-				try {
-					throw new Exception("Status invalido");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return;
-			}
-			break;
-		case 30:
-			if (!((sit.equals(40)) || (sit.equals(21)) || (sit.equals(101)))) {
-				try {
-					throw new Exception("Status invalido");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				return;
-			}
-			break; */
-		default:
-			sit=null;
+	public void startSituacao(SituacaoPropostaCredito situacao) {
+		this.situacao=situacao;
+	}
+	
+	public void setSituacao(SituacaoPropostaCredito newsit) {
+		if (situacao == null) {
+			situacao = SituacaoPropostaCredito.EM_EDICAO;
 		}
 
-		this.situacao = sit;
-	}
+		switch (situacao) {
+		case EM_EDICAO:
+			if (newsit.equals(SituacaoPropostaCredito.ABERTA)) {
+				this.situacao = newsit;
+				break;
+			}
+		case ABERTA:
+			if ((newsit.equals(SituacaoPropostaCredito.EM_EDICAO))
+					|| (newsit.equals(SituacaoPropostaCredito.PENDENTE_DE_ANALISE))
+					|| (newsit.equals(SituacaoPropostaCredito.SUBMETIDA_PARA_ANALISE))
+					|| (newsit.equals(SituacaoPropostaCredito.CANCELADA))) {
+				this.situacao = newsit;
+			}
+			break;
+		case PENDENTE_DE_ANALISE:
+			if ((newsit.equals(SituacaoPropostaCredito.ABERTA))
+					|| (newsit.equals(SituacaoPropostaCredito.SUBMETIDA_PARA_ANALISE))
+					|| (newsit.equals(SituacaoPropostaCredito.CANCELADA))) {
+				this.situacao = newsit;
+			}
 
+			break;
+		case SUBMETIDA_PARA_ANALISE:
+			if ((newsit.equals(SituacaoPropostaCredito.ABERTA))
+					|| (newsit.equals(SituacaoPropostaCredito.APROVADA))
+					|| (newsit.equals(SituacaoPropostaCredito.REPROVADA))
+					|| (newsit.equals(SituacaoPropostaCredito.CANCELADA))) {
+				this.situacao = newsit;
+			}
+
+			break;
+		case APROVADA:
+			if ((newsit.equals(SituacaoPropostaCredito.ANALISE_NO_CONVENIO))
+					|| (newsit.equals(SituacaoPropostaCredito.CANCELADA))) {
+				this.situacao = newsit;
+			}
+			break;
+		case ANALISE_NO_CONVENIO:
+			if ((newsit.equals(SituacaoPropostaCredito.REPROVADA_NO_CONVENIO))
+					|| (newsit.equals(SituacaoPropostaCredito.PROCESSANDO_PAGAMENTO))
+					|| (newsit.equals(SituacaoPropostaCredito.CANCELADA))) {
+				this.situacao = newsit;
+			}
+			break;
+		case PROCESSANDO_PAGAMENTO:
+			if (newsit.equals(SituacaoPropostaCredito.PAGAMENTO_EFETUADO)) {
+				this.situacao = newsit;
+			}
+			break;
+		case REPROVADA:
+			break;
+		case CANCELADA:
+			break;
+		case REPROVADA_NO_CONVENIO:
+			break;
+		default:
+			return;
+		}
+	}
 
 }
