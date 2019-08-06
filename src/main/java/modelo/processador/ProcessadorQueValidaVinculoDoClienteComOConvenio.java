@@ -7,7 +7,7 @@ import modelo.Convenio;
 import modelo.ConvenioCliente;
 import modelo.SituacaoConvenio;
 import modelo.dto.ValidaVinculoDoClienteComOConvenioDTO;
-import sun.plugin2.message.Message;
+//import sun.plugin2.message.Message;
 
 import java.text.MessageFormat;
 import java.util.List;
