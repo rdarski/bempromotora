@@ -14,6 +14,8 @@ public class ContratoPropostaCredito extends AbstractEntity {
 
     private Arquivo arquivo;
 
+    private PropostaCredito proposta;
+
     @Override
     public Long getId() {
         return id;
@@ -45,5 +47,13 @@ public class ContratoPropostaCredito extends AbstractEntity {
 
     public void setArquivo(Arquivo arquivo) {
         this.arquivo = arquivo;
+    }
+
+    public PropostaCredito getProposta() {
+        return proposta;
+    }
+
+    public void setProposta(PropostaCredito proposta) {
+        this.proposta = proposta;
     }
 }
