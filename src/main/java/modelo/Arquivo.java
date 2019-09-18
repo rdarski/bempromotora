@@ -1,6 +1,6 @@
 package modelo;
 
-public class Arquivo extends AbstractEntity{
+public class Arquivo extends modelo.AbstractEntity {
 
     private Long id;
 

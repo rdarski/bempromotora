@@ -2,7 +2,7 @@ package modelo;
 
 import comum.Data;
 
-public class Notificacao extends AbstractEntity{
+public class Notificacao extends modelo.AbstractEntity {
 
     private Long id;
 
