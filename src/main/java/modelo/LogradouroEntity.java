@@ -7,7 +7,7 @@ import org.dom4j.tree.AbstractEntity;
 import java.util.List;
 
 
-
+ 
 @Entity
 @Table(name = "Logradouro")
 public class LogradouroEntity extends AbstractEntity

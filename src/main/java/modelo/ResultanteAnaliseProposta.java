@@ -1,5 +1,5 @@
 package modelo;
-
+ 
 public enum ResultanteAnaliseProposta {
 
     APROVADA("Aprovada"),

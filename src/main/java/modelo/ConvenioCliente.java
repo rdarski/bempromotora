@@ -1,5 +1,5 @@
 package modelo;
-
+ 
 public class ConvenioCliente {
 
     private Convenio convenio;

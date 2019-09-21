@@ -10,7 +10,7 @@ import modelo.PropostaEntity;
 
 import java.util.List;
 
-
+ 
 
 
 @Entity

@@ -11,7 +11,7 @@ import modelo.UsuarioEntity;
 import java.util.List;
 
 
-
+ 
 
 @Entity
 @Table(name = "PessoasFisica")

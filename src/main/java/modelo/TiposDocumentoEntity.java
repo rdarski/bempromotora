@@ -10,7 +10,7 @@ import modelo.DocumentoEntity;
 import java.util.List;
 
 
-
+ 
 
 @Entity
 @Table(name = "TiposDocumento")

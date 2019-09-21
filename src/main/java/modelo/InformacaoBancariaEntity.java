@@ -9,7 +9,7 @@ import modelo.LocalidadeEntity;
 
 import java.util.List;
 
-
+ 
 
 
 @Entity

@@ -9,7 +9,7 @@ import modelo.EvolucoesDaPropostaEntity;
 
 import java.util.List;
 
-
+ 
 
 
 @Entity

@@ -11,7 +11,7 @@ import modelo.PropostaEntity;
 import java.util.List;
 
 
-
+ 
 
 @Entity
 @Table(name = "Convenio")

@@ -1,4 +1,4 @@
-package arquitetura;
+package modelo;
 
 public abstract class AbstractEntity {
 

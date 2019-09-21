@@ -14,7 +14,7 @@ import modelo.PessoasFisicaEntity;
 import java.util.List;
 
 
-
+ 
 
 @Entity
 @Table(name = "Parceiro")

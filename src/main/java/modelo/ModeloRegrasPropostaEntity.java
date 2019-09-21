@@ -10,7 +10,7 @@ import modelo.PropostaEntity;
 import modelo.RegraEntity;
 
 import java.util.List;
-
+ 
 
 
 
