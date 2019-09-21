@@ -16,7 +16,6 @@ public class Documento extends AbstractEntity{
 
     private Arquivo anexo;
 
-    @Override
     public Long getId() {
         return id;
     }

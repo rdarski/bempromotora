@@ -1,6 +1,6 @@
 package modelo;
 
-public class Arquivo extends modelo.AbstractEntity {
+public class Arquivo extends AbstractEntity {
 
     private Long id;
 
@@ -10,7 +10,7 @@ public class Arquivo extends modelo.AbstractEntity {
 
     private String extensao;
 
-    @Override
+
     public Long getId() {
         return id;
     }

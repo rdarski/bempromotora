@@ -6,7 +6,7 @@ public class Convenio extends AbstractEntity{
 
     private String descricao;
 
-    @Override
+    
     public Long getId() {
         return id;
     }
